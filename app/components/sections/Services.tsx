@@ -176,7 +176,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
                 scale: [1, 1.1, 1],
                 filter: ["hue-rotate(0deg)", "hue-rotate(30deg)", "hue-rotate(0deg)"]
               } : {}}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" as const }}
             >
               {service.icon}
             </motion.div>

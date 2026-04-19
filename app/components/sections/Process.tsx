@@ -78,7 +78,7 @@ const pulseGlow = {
   animate: {
     scale: [1, 1.2, 1],
     opacity: [0.5, 0.8, 0.5],
-    transition: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+    transition: { duration: 3, repeat: Infinity, ease: "easeInOut" as const }
   }
 };
 
