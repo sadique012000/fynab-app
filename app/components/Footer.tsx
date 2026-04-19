@@ -10,30 +10,30 @@ import {
 
 const footerLinks = {
   company: [
-    { label: "About Us", href: "#" },
-    { label: "Careers", href: "#" },
-    { label: "Blog", href: "#" },
-    { label: "Press", href: "#" },
+    { label: "About Us", href: "/about" },
+    { label: "Careers", href: "/careers" }, // Assuming about for now
+    { label: "Blog", href: "/about" },
+    { label: "Press", href: "/about" },
   ],
   services: [
-    { label: "Cloud Solutions", href: "#services" },
-    { label: "Custom Software", href: "#services" },
-    { label: "Data Analytics", href: "#services" },
-    { label: "Cybersecurity", href: "#services" },
+    { label: "Cloud Solutions", href: "/services" },
+    { label: "Custom Software", href: "/services" },
+    { label: "Data Analytics", href: "/services" },
+    { label: "Cybersecurity", href: "/services" },
   ],
   resources: [
-    { label: "Case Studies", href: "#case-study" },
-    { label: "Whitepapers", href: "#" },
-    { label: "Documentation", href: "#" },
-    { label: "FAQs", href: "#" },
+    { label: "Process", href: "/process" },
+    { label: "Testimonials", href: "/testimonials" },
+    { label: "Documentation", href: "/process" },
+    { label: "FAQs", href: "/contact" },
   ],
 };
 
 export default function Footer() {
   return (
     <motion.footer
-      id="contact"
-      className="relative overflow-hidden bg-[#05070F] text-slate-300"
+      id="footer"
+      className="relative overflow-hidden bg-[#020205] text-slate-300"
       initial="hidden"
       whileInView="visible"
       viewport={viewportOnce}
@@ -60,7 +60,7 @@ export default function Footer() {
         >
           {/* ── Brand ───────────────── */}
           <motion.div className="lg:col-span-2" variants={staggerChild}>
-            <a href="#" className="flex items-center gap-3 mb-6 group">
+            <a href="/" className="flex items-center gap-3 mb-6 group">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-indigo-500/30 group-hover:shadow-indigo-500/50 transition-all duration-300">
                 <span className="text-white font-bold text-sm">F</span>
               </div>

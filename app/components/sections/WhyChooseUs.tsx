@@ -1,10 +1,9 @@
 "use client";
+/* eslint-disable react/no-unescaped-entities */
 
 import { motion } from "framer-motion";
 import {
-  fadeUp,
   slideInLeft,
-  staggerContainer,
   viewportOnce,
 } from "@/app/lib/animations";
 
@@ -87,7 +86,7 @@ const features = [
 ];
 
 const featureCardVariant = {
-  hidden: (i: number) => ({
+  hidden: () => ({
     opacity: 0,
     y: 30,
     filter: "blur(10px)",

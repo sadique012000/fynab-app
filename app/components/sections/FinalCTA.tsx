@@ -73,7 +73,7 @@ export default function FinalCTA() {
             >
               {/* ── Primary CTA ───────────────── */}
               <motion.a
-                href="#contact"
+                href="/contact"
                 whileHover={{
                   scale: 1.05,
                   y: -2,

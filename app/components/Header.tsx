@@ -1,14 +1,16 @@
 "use client";
+/* eslint-disable react/no-unescaped-entities */
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Industries", href: "#industries" },
-  { label: "Process", href: "#process" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Industries", href: "/industries" },
+  { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Header() {
@@ -42,7 +44,7 @@ export default function Header() {
           <div className="flex items-center justify-between h-14 lg:h-16">
             {/* Logo */}
             <motion.a
-              href="#"
+              href="/"
               className="flex items-center gap-2.5 group relative"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -68,7 +70,7 @@ export default function Header() {
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-4">
               <motion.a
-                href="#contact"
+                href="/contact"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 className="relative group px-6 py-2.5 text-sm font-bold text-white bg-indigo-600 rounded-xl overflow-hidden shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_30px_rgba(79,70,229,0.5)] transition-all duration-500"
@@ -145,7 +147,7 @@ export default function Header() {
               ))}
               
               <motion.a
-                href="#contact"
+                href="/contact"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
@@ -157,7 +159,7 @@ export default function Header() {
             </nav>
 
             <div className="mt-auto items-center justify-center flex gap-8 pb-8 border-t border-white/5 pt-8">
-               <span className="text-slate-500 text-sm">© 2026 Fynab</span>
+               <span className="text-slate-500 text-sm">&copy; 2026 Fynab</span>
                <div className="flex gap-4">
                   <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-white text-xs">Tw</div>
                   <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-white text-xs">Li</div>
@@ -189,7 +191,7 @@ function NavLink({ href, label, index }: { href: string; label: string; index: n
       <span className="relative z-10">{label}</span>
       {isHovered && (
         <motion.div
-          layoutId="nav-pill"
+          layoutId={"nav-pill"}
           transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
           className="absolute inset-0 bg-white/5 rounded-full z-0 border border-white/10"
         />

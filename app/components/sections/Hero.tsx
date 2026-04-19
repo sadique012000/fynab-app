@@ -111,7 +111,7 @@ export default function Hero() {
             className="flex flex-col sm:flex-row items-center justify-center gap-5"
           >
             <motion.a
-              href="#contact"
+              href="/contact"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="relative group flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-indigo-600 rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(79,70,229,0.4)] hover:shadow-[0_0_60px_rgba(79,70,229,0.7)] transition-all duration-500"
@@ -127,7 +127,7 @@ export default function Hero() {
             </motion.a>
 
             <motion.a
-              href="#services"
+              href="/services"
               whileHover={{ scale: 1.02, backgroundColor: "rgba(255,255,255,0.06)", borderColor: "rgba(255,255,255,0.15)" }}
               whileTap={{ scale: 0.98 }}
               className="flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-slate-300 bg-white/[0.02] backdrop-blur-xl rounded-2xl border border-white/[0.08] shadow-sm hover:text-white transition-all duration-500"
