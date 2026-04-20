@@ -64,152 +64,120 @@ const tagDotColors: Record<string, string> = {
 };
 
 export default function TechStack() {
+  const row1 = techItems.slice(0, 11);
+  const row2 = techItems.slice(11, 21);
+  const row3 = techItems.slice(21, 31);
+  const row4 = techItems.slice(31);
+
   return (
-    <section className="relative py-12 sm:py-24  overflow-hidden bg-[#060913]">
-      {/* ── ambient minimalist dark depth ───────────────────────── */}
+    <section className="relative py-12 sm:py-24 overflow-hidden bg-[#060913]">
+      {/* ambient minimalist dark depth */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[80%] bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.03)_0%,rgba(0,0,0,0)_70%)]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        {/* ── header ─────────────────────────────────── */}
-        <motion.div
-          className="text-center mb-6"
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={viewportOnce}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-        >
-          <motion.span
-            className="inline-block px-3 py-1 text-xs font-semibold text-slate-300 bg-white/[0.03] border border-white/[0.08] rounded-full uppercase tracking-wider mb-4"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+      <div className="relative z-10">
+        {/* header */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={viewportOnce}
-            transition={{ delay: 0.1 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
           >
-            Tech Stack
-          </motion.span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Technologies We{" "}
-            <span className="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
-              Master
-            </span>
-          </h2>
-          <p className="text-lg text-slate-400 font-light max-w-xl mx-auto">
-            A curated ecosystem of modern tools powering every layer of your stack.
-          </p>
-        </motion.div>
+            <motion.span
+              className="inline-block px-3 py-1 text-xs font-semibold text-slate-300 bg-white/[0.03] border border-white/[0.08] rounded-full uppercase tracking-wider mb-4"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={viewportOnce}
+              transition={{ delay: 0.1 }}
+            >
+              Tech Stack
+            </motion.span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+              Technologies We{" "}
+              <span className="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                Master
+              </span>
+            </h2>
+            <p className="text-lg text-slate-400 font-light max-w-xl mx-auto">
+              A curated ecosystem of modern tools powering every layer of your stack.
+            </p>
+          </motion.div>
+        </div>
 
-        {/* ── tag legend ─────────────────────────────── */}
-        <motion.div
-          className="flex flex-wrap items-center justify-center gap-4 mb-14"
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={viewportOnce}
-          transition={{ delay: 0.25, duration: 0.5 }}
-        >
-          {Object.keys(tagColors).map((tag) => (
-            <div key={tag} className="flex items-center gap-1.5 text-xs text-slate-400 tracking-wide font-medium">
-              <span className={`w-1.5 h-1.5 rounded-full ${tagDotColors[tag]} opacity-80`} />
-              {tag}
-            </div>
-          ))}
-        </motion.div>
+        {/* Marquee Rows */}
+        <div className="flex flex-col gap-6 lg:gap-8">
+          <TechMarquee items={row1} direction="left" speed={40} />
+          <TechMarquee items={row2} direction="right" speed={55} />
+          <TechMarquee items={row3} direction="left" speed={35} />
+          <TechMarquee items={row4} direction="right" speed={45} />
+        </div>
 
-        {/* ── collage grid ───────────────────────────── */}
-        <motion.div
-          className="flex flex-wrap items-center justify-center gap-4 lg:gap-5"
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          variants={{
-            hidden: { opacity: 1 },
-            visible: {
-              opacity: 1,
-              transition: { staggerChildren: 0.03 },
-            },
-          }}
-        >
-          {techItems.map((tech, i) => {
-            const s = sizeMap[tech.size as keyof typeof sizeMap];
-            const floatDelay = (i * 0.37) % 3;
-            const floatDuration = 3 + (i % 3) * 0.8;
-
-            return (
-              <motion.div
-                key={tech.name}
-                variants={{
-                  hidden: { opacity: 0, scale: 0.6, y: 30 },
-                  visible: {
-                    opacity: 1,
-                    scale: 1,
-                    y: 0,
-                    transition: {
-                      type: "spring" as const,
-                      stiffness: 180,
-                      damping: 18,
-                    },
-                  },
-                }}
-                whileHover={{
-                  scale: 1.08,
-                  y: -6,
-                  zIndex: 50,
-                }}
-                whileTap={{ scale: 0.95 }}
-                className={`
-                  group relative ${s.card} flex flex-col items-center justify-center gap-2
-                  rounded-[1.3rem] backdrop-blur-xl border border-white/[0.04] cursor-pointer
-                  bg-white/[0.01] bg-gradient-to-br ${tagColors[tech.tag]}
-                  transition-all duration-500
-                `}
-              >
-                {/* ── floating logo ──────────────────── */}
-                <motion.div
-                  className="relative flex items-center justify-center"
-                  animate={{ y: [0, -4, 0] }}
-                  transition={{
-                    duration: floatDuration,
-                    repeat: Infinity,
-                    ease: "easeInOut" as const,
-                    delay: floatDelay,
-                  }}
-                >
-                  {/* Subtle inner reflection mask */}
-                  <div className="absolute inset-0 bg-white/5 lg:bg-transparent blur-md rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none" />
-
-                  <img
-                    src={tech.logo}
-                    alt={tech.name}
-                    className={`${s.icon} opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500 relative z-10`}
-                  />
-                </motion.div>
-
-                {/* ── tech name ──────────────────────── */}
-                <span className={`${s.text} font-medium tracking-wide text-slate-500 group-hover:text-slate-200 transition-colors duration-300`}>
-                  {tech.name}
-                </span>
-
-                {/* ── tag dot indicator ──────────────── */}
-                <motion.div
-                  className={`absolute top-3 right-3 w-1.5 h-1.5 rounded-full ${tagDotColors[tech.tag]} opacity-20 group-hover:opacity-100 transition-opacity duration-500`}
-                />
-              </motion.div>
-            );
-          })}
-        </motion.div>
-
-        {/* ── bottom tag line ────────────────────────── */}
-        <motion.p
-          className="text-center text-sm font-light text-slate-500 mt-16"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={viewportOnce}
-          transition={{ delay: 0.5, duration: 0.6 }}
-        >
-          …and 50+ more tools and frameworks in our arsenal
-        </motion.p>
+        {/* bottom tag line */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.p
+            className="text-center text-sm font-light text-slate-500 mt-16"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={viewportOnce}
+            transition={{ delay: 0.5, duration: 0.6 }}
+          >
+            …and 50+ more tools and frameworks in our arsenal
+          </motion.p>
+        </div>
       </div>
     </section>
+  );
+}
+
+
+function TechMarquee({ items, direction, speed }: { items: typeof techItems, direction: "left" | "right", speed: number }) {
+  // Duplicate items for continuous loop
+  const duplicatedItems = [...items, ...items, ...items, ...items];
+
+  return (
+    <div className="flex overflow-hidden group select-none">
+      <motion.div
+        className="flex gap-4 lg:gap-6 px-4"
+        animate={{
+          x: direction === "left" ? ["0%", "-50%"] : ["-50%", "0%"]
+        }}
+        transition={{
+          duration: speed,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+      >
+        {duplicatedItems.map((tech, i) => {
+          const s = sizeMap[tech.size as keyof typeof sizeMap];
+          return (
+            <div
+              key={`${tech.name}-${i}`}
+              className={`
+                group/card relative ${s.card} flex flex-col items-center justify-center gap-2
+                rounded-[1.3rem] backdrop-blur-xl border border-white/[0.04] cursor-pointer
+                bg-white/[0.01] bg-gradient-to-br ${tagColors[tech.tag]}
+                transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:zIndex-50
+              `}
+            >
+              <div className="relative flex items-center justify-center">
+                <img
+                  src={tech.logo}
+                  alt={tech.name}
+                  className={`${s.icon} opacity-40 grayscale group-hover/card:opacity-100 group-hover/card:grayscale-0 transition-all duration-500 relative z-10`}
+                />
+              </div>
+              <span className={`${s.text} font-medium tracking-wide text-slate-500 group-hover/card:text-slate-200 transition-colors duration-300`}>
+                {tech.name}
+              </span>
+              <div
+                className={`absolute top-3 right-3 w-1.5 h-1.5 rounded-full ${tagDotColors[tech.tag]} opacity-20 group-hover/card:opacity-100 transition-opacity duration-500`}
+              />
+            </div>
+          );
+        })}
+      </motion.div>
+    </div>
   );
 }
