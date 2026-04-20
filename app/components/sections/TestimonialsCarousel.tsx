@@ -78,7 +78,7 @@ export default function TestimonialsCarousel() {
   const visibleCards = getVisibleCards();
 
   return (
-    <section id="testimonials" className="relative py-32 bg-[#05070F] overflow-hidden selection:bg-indigo-500/30">
+    <section id="testimonials" className="relative py-12 sm:py-24  bg-[#05070F] overflow-hidden selection:bg-indigo-500/30">
       {/* Background FX Options */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-indigo-600/10 blur-[120px] mix-blend-screen" />
@@ -130,8 +130,8 @@ export default function TestimonialsCarousel() {
               return (
                 <motion.div
                   key={index}
-                  initial={{ 
-                    opacity: 0, 
+                  initial={{
+                    opacity: 0,
                     x: position === 0 ? "0%" : position === 1 ? "80%" : "-80%",
                     scale: 0.8,
                     z: -100
@@ -158,7 +158,7 @@ export default function TestimonialsCarousel() {
                     <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
                     <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent" />
                     <div className="absolute bottom-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    
+
                     {/* Top Radial Glow for center active */}
                     {isCenter && (
                       <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-64 h-32 bg-indigo-500/20 blur-[60px] pointer-events-none transition-opacity duration-700" />
@@ -242,7 +242,7 @@ export default function TestimonialsCarousel() {
                 >
                   <div className="absolute inset-0 bg-white/10" />
                   {i === current && (
-                    <motion.div 
+                    <motion.div
                       className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-cyan-400 shadow-[0_0_10px_rgba(99,102,241,0.8)]"
                       layoutId="activeProgress"
                       transition={{ type: "spring", stiffness: 300, damping: 30 }}

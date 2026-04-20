@@ -33,32 +33,20 @@ const steps = [
     }
 ];
 
+import PageHero from "../components/sections/PageHero";
+
 export default function ProcessPage() {
   return (
     <>
       <Header />
-      <main className="flex-1 bg-[#020205] text-white pt-32">
-        {/* Process Hero */}
-        <section className="py-24 px-6 relative overflow-hidden text-center">
-            <div className="absolute inset-0 bg-indigo-500/5 blur-[120px] rounded-full scale-150 -translate-y-1/2" />
-            <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={staggerContainer}
-                className="max-w-4xl mx-auto"
-            >
-                <motion.h1 variants={fadeUp} className="text-5xl sm:text-7xl font-black mb-8">
-                    The Fynab <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-400 to-purple-400">
-                        Methodology
-                    </span>
-                </motion.h1>
-                <motion.p variants={fadeUp} className="text-xl text-slate-400 font-light leading-relaxed">
-                    Precision, speed, and transparency. we&apos;ve refined our process 
-                    over a decade of delivering world-class technology.
-                </motion.p>
-            </motion.div>
-        </section>
+      <main className="flex-1 bg-[#020205] text-white">
+        <PageHero
+          title="The Fynab Methodology"
+          subtitle="Precision, speed, and transparency. we've refined our process over a decade of delivering world-class technology."
+          badge="Our Process"
+          image="/images/heroes/process_hero.png"
+        />
+
 
         {/* Big Step Timeline */}
         <section className="py-20 px-6 max-w-7xl mx-auto relative">

@@ -9,6 +9,7 @@ import {
   staggerChild,
   viewportOnce,
 } from "@/app/lib/animations";
+import { IndustryCard } from "@/app/components/IndustryCard";
 
 // Deep, neon-inspired premium color palette mapped to industries
 const colorMap: Record<
@@ -20,6 +21,7 @@ const colorMap: Record<
     activeBorder: string;
     text: string;
     glow: string;
+    glowColor: string;
     iconBg: string;
     activeIconBg: string;
     iconColor: string;
@@ -32,6 +34,7 @@ const colorMap: Record<
     activeBorder: "border-rose-500/40",
     text: "text-rose-400",
     glow: "shadow-[0_0_40px_-5px_rgba(244,63,94,0.4)]",
+    glowColor: "rgba(244,63,94,0.3)",
     iconBg: "bg-white/[0.02]",
     activeIconBg: "bg-rose-500/20 shadow-[0_0_30px_rgba(244,63,94,0.5)]",
     iconColor: "text-rose-400",
@@ -43,6 +46,7 @@ const colorMap: Record<
     activeBorder: "border-emerald-500/40",
     text: "text-emerald-400",
     glow: "shadow-[0_0_40px_-5px_rgba(16,185,129,0.4)]",
+    glowColor: "rgba(16,185,129,0.3)",
     iconBg: "bg-white/[0.02]",
     activeIconBg: "bg-emerald-500/20 shadow-[0_0_30px_rgba(16,185,129,0.5)]",
     iconColor: "text-emerald-400",
@@ -54,6 +58,7 @@ const colorMap: Record<
     activeBorder: "border-amber-500/40",
     text: "text-amber-400",
     glow: "shadow-[0_0_40px_-5px_rgba(245,158,11,0.4)]",
+    glowColor: "rgba(245,158,11,0.3)",
     iconBg: "bg-white/[0.02]",
     activeIconBg: "bg-amber-500/20 shadow-[0_0_30px_rgba(245,158,11,0.5)]",
     iconColor: "text-amber-400",
@@ -65,6 +70,7 @@ const colorMap: Record<
     activeBorder: "border-cyan-500/40",
     text: "text-cyan-400",
     glow: "shadow-[0_0_40px_-5px_rgba(6,182,212,0.4)]",
+    glowColor: "rgba(6,182,212,0.3)",
     iconBg: "bg-white/[0.02]",
     activeIconBg: "bg-cyan-500/20 shadow-[0_0_30px_rgba(6,182,212,0.5)]",
     iconColor: "text-cyan-400",
@@ -76,6 +82,7 @@ const colorMap: Record<
     activeBorder: "border-violet-500/40",
     text: "text-violet-400",
     glow: "shadow-[0_0_40px_-5px_rgba(139,92,246,0.4)]",
+    glowColor: "rgba(139,92,246,0.3)",
     iconBg: "bg-white/[0.02]",
     activeIconBg: "bg-violet-500/20 shadow-[0_0_30px_rgba(139,92,246,0.5)]",
     iconColor: "text-violet-400",
@@ -87,6 +94,7 @@ const colorMap: Record<
     activeBorder: "border-indigo-500/40",
     text: "text-indigo-400",
     glow: "shadow-[0_0_40px_-5px_rgba(99,102,241,0.4)]",
+    glowColor: "rgba(99,102,241,0.3)",
     iconBg: "bg-white/[0.02]",
     activeIconBg: "bg-indigo-500/20 shadow-[0_0_30px_rgba(99,102,241,0.5)]",
     iconColor: "text-indigo-400",
@@ -103,6 +111,7 @@ const industries = [
       </svg>
     ),
     color: "rose",
+    image: "1441986300917-64674bd600d8"
   },
   {
     name: "Finance & Banking",
@@ -113,6 +122,7 @@ const industries = [
       </svg>
     ),
     color: "emerald",
+    image: "1563986768609-322da13575f3"
   },
   {
     name: "Retail Matrix",
@@ -123,6 +133,7 @@ const industries = [
       </svg>
     ),
     color: "amber",
+    image: "1441986300917-64674bd600d8"
   },
   {
     name: "Education",
@@ -135,6 +146,7 @@ const industries = [
       </svg>
     ),
     color: "violet",
+    image: "1586528116311-ad8dd3c8310d"
   },
   {
     name: "Manufacturing",
@@ -145,6 +157,7 @@ const industries = [
       </svg>
     ),
     color: "cyan",
+    image: "1581091226825-a6a2a5aee158"
   },
   {
     name: "Logistics",
@@ -155,6 +168,7 @@ const industries = [
       </svg>
     ),
     color: "indigo",
+    image: "1586528116311-ad8dd3c8310d"
   },
 ];
 
@@ -162,7 +176,7 @@ export default function Industries() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(0);
 
   return (
-    <section id="industries" className="relative py-32 bg-[#05070F] overflow-hidden selection:bg-indigo-500/30">
+    <section id="industries" className="relative py-12 sm:py-24 bg-[#05070F] overflow-hidden selection:bg-indigo-500/30">
       {/* Background Deep Glows */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-[10%] left-[20%] w-[600px] h-[600px] bg-indigo-600/10 blur-[150px] rounded-full mix-blend-screen animate-pulse" style={{ animationDuration: '8s' }} />
@@ -205,153 +219,31 @@ export default function Industries() {
 
         {/* Desktop Expanding Flex Gallery */}
         <div className="hidden lg:flex w-full h-[550px] gap-4">
-          {industries.map((industry, index) => {
-            const isActive = hoveredIndex === index;
-            const theme = colorMap[industry.color] || colorMap.indigo;
-
-            return (
-              <motion.div
-                key={industry.name}
-                onHoverStart={() => setHoveredIndex(index)}
-                layout
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{
-                  layout: { type: "spring", stiffness: 200, damping: 25 },
-                  opacity: { duration: 0.5, delay: index * 0.1 },
-                  y: { duration: 0.5, delay: index * 0.1 }
-                }}
-                className={`relative h-full rounded-3xl cursor-pointer overflow-hidden group border transition-all duration-500 
-                  ${isActive ? theme.activeBorder : theme.border} 
-                  ${isActive ? theme.glow : ""} 
-                  ${isActive ? "z-10 bg-[#0a0f1c]/90" : "z-0 bg-white/[0.02]"}`}
-                style={{
-                  flex: isActive ? 4 : 1, // Widens heavily on hover
-                }}
-              >
-                {/* Dynamic Gradient Background for Active State */}
-                <motion.div
-                  className={`absolute inset-0 bg-gradient-to-br ${isActive ? theme.activeGradient : theme.gradient}`}
-                  animate={{ opacity: isActive ? 1 : 0 }}
-                  transition={{ duration: 0.3 }}
-                />
-                
-                {/* Advanced Glassmorphism */}
-                <div className="absolute inset-0 backdrop-blur-2xl pointer-events-none" />
-                {isActive && (
-                  <>
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-white/[0.02] mix-blend-screen rounded-full blur-[80px]" />
-                    <div className={`absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-${industry.color}-500/10 to-transparent pointer-events-none`} />
-                  </>
-                )}
-
-                <div className="relative z-10 w-full h-full flex flex-col items-center justify-end p-6 sm:p-8">
-                  {/* Expanded Content View */}
-                  <AnimatePresence>
-                    {isActive && (
-                      <motion.div
-                        initial={{ opacity: 0, x: -20, filter: "blur(4px)" }}
-                        animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                        exit={{ opacity: 0, scale: 0.95, position: "absolute" }}
-                        transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
-                        className="w-full flex-col items-start mb-auto pt-6 pl-4"
-                      >
-                        <motion.div
-                          initial={{ scale: 0.8 }}
-                          animate={{ scale: 1 }}
-                          transition={{ type: "spring", bounce: 0.5 }}
-                          className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-8 border border-white/[0.1] ${theme.activeIconBg} ${theme.iconColor}`}
-                        >
-                          {industry.icon}
-                        </motion.div>
-                        <h3 className="text-3xl font-extrabold text-white tracking-tight mb-4 pr-10 leading-tight drop-shadow-md">
-                          {industry.name}
-                        </h3>
-                        <p className="text-slate-300 font-light leading-relaxed max-w-sm mb-10 text-lg">
-                          {industry.description}
-                        </p>
-
-                        <motion.button
-                          whileHover={{ x: 5 }}
-                          whileTap={{ scale: 0.95 }}
-                          className={`group flex items-center gap-3 font-semibold ${theme.text} hover:text-white transition-colors duration-300`}
-                        >
-                          Explore Solutions
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover:translate-x-1 transition-transform">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                          </svg>
-                        </motion.button>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
-                  {/* Compact Title (When not active) */}
-                  <AnimatePresence>
-                    {!isActive && (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0, position: "absolute" }}
-                        transition={{ duration: 0.3 }}
-                        className="flex flex-col items-center h-full justify-between w-full"
-                      >
-                        <div
-                          className={`w-12 h-12 rounded-xl border border-white/[0.08] flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity duration-300 mb-4 ${theme.iconBg} ${theme.iconColor}`}
-                        >
-                          {industry.icon}
-                        </div>
-                        <div className="flex-1 flex items-end mb-8 relative">
-                          <h3
-                            className="text-lg font-bold text-slate-500 whitespace-nowrap transform -rotate-90 origin-bottom pb-6 tracking-[0.2em] uppercase opacity-70 group-hover:opacity-100 group-hover:text-slate-300 transition-all duration-300"
-                          >
-                            {industry.name}
-                          </h3>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </motion.div>
-            );
-          })}
+          {industries.map((industry, index) => (
+            <IndustryCard
+              key={industry.name}
+              industry={industry}
+              index={index}
+              isActive={hoveredIndex === index}
+              onHover={() => setHoveredIndex(index)}
+              theme={colorMap[industry.color] || colorMap.indigo}
+            />
+          ))}
         </div>
 
         {/* Mobile / Tablet View (Stacked Cards) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:hidden">
-          {industries.map((industry, index) => {
-            const theme = colorMap[industry.color] || colorMap.indigo;
-            return (
-              <motion.div
-                key={industry.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`relative group rounded-3xl p-8 border border-white/[0.04] bg-[#0a0f1c]/80 backdrop-blur-xl overflow-hidden hover:border-white/[0.1] transition-all duration-500 hover:${theme.glow}`}
-              >
-                <div className={`absolute inset-0 bg-gradient-to-br ${theme.activeGradient} opacity-0 group-hover:opacity-100 transition-duration-500`} />
-                <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-white/[0.02] mix-blend-screen rounded-full blur-[40px] pointer-events-none" />
-
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 border border-white/[0.08] ${theme.activeIconBg} ${theme.iconColor}`}>
-                    {industry.icon}
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{industry.name}</h3>
-                  <p className="text-slate-400 font-light mb-8 leading-relaxed">{industry.description}</p>
-
-                  <div className={`mt-auto flex items-center gap-2 font-semibold ${theme.text} hover:text-white transition-colors cursor-pointer`}>
-                    Explore Solutions
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover:translate-x-1 transition-transform">
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </div>
-                </div>
-              </motion.div>
-            )
-          })}
+          {industries.map((industry, index) => (
+            <IndustryCard
+              key={industry.name}
+              industry={industry}
+              index={index}
+              isActive={false} // Mobiles cards are always "active" in their own way, or we don't use flex expansion
+              onHover={() => { }}
+              theme={colorMap[industry.color] || colorMap.indigo}
+              isMobile={true}
+            />
+          ))}
         </div>
       </div>
     </section>

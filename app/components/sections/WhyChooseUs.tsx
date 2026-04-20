@@ -106,11 +106,11 @@ const featureCardVariant = {
 
 export default function WhyChooseUs() {
   return (
-    <section className="relative py-32 bg-[#060913] overflow-hidden selection:bg-indigo-500/30">
+    <section className="relative py-12 sm:py-24  bg-[#060913] overflow-hidden selection:bg-indigo-500/30">
       {/* Immersive Dark Theme Backgrounds */}
-      <div 
-        className="absolute inset-0 z-0 opacity-[0.15]" 
-        style={{ backgroundImage: noiseTexture }} 
+      <div
+        className="absolute inset-0 z-0 opacity-[0.15]"
+        style={{ backgroundImage: noiseTexture }}
       />
       <div className="absolute top-0 left-[-20%] w-[60rem] h-[60rem] bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-[-20%] right-[-10%] w-[50rem] h-[50rem] bg-cyan-600/10 rounded-full blur-[120px] pointer-events-none" />
@@ -118,7 +118,7 @@ export default function WhyChooseUs() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-[1fr_1.2fr] gap-16 lg:gap-24 items-center">
-          
+
           {/* Left Content Column */}
           <motion.div
             initial="hidden"
@@ -142,7 +142,7 @@ export default function WhyChooseUs() {
                 absolute scale.
               </span>
             </h2>
-            
+
             <p className="text-lg sm:text-xl text-slate-400 mb-12 leading-relaxed font-light max-w-lg">
               We combine deep technical expertise with relentless execution to deliver
               systems that don&apos;t just work — they drive your strategic horizon.
@@ -153,13 +153,13 @@ export default function WhyChooseUs() {
               className="relative p-1 rounded-3xl bg-gradient-to-br from-white/10 to-white/0 shadow-2xl max-w-md group"
               whileHover={{ y: -5 }}
               animate={{ y: [0, -8, 0] }}
-              transition={{ 
+              transition={{
                 y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-                type: "spring", stiffness: 300 
+                type: "spring", stiffness: 300
               }}
             >
               <div className="absolute inset-0 bg-indigo-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl" />
-              
+
               <div className="relative flex items-start gap-5 p-6 rounded-[1.4rem] bg-[#0A0E17]/90 backdrop-blur-xl border border-white/[0.08] group-hover:border-indigo-500/30 transition-colors duration-500">
                 <motion.div
                   className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-cyan-400 p-[1px] relative"
@@ -177,7 +177,7 @@ export default function WhyChooseUs() {
                     </svg>
                   </div>
                 </motion.div>
-                
+
                 <div>
                   <h4 className="font-bold text-white mb-1.5 text-lg">
                     Certified Excellence
@@ -207,13 +207,13 @@ export default function WhyChooseUs() {
               >
                 {/* Internal Hover Gradient */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out`} />
-                
+
                 <div className="relative z-10 flex flex-col h-full">
                   <motion.div
                     className="w-12 h-12 rounded-2xl bg-white/[0.05] border border-white/10 text-slate-300 flex items-center justify-center mb-6 shadow-lg backdrop-blur-md"
                     variants={{
-                      hover: { 
-                        scale: 1.1, 
+                      hover: {
+                        scale: 1.1,
                         rotate: 5,
                         color: "#fff",
                         backgroundColor: "rgba(255,255,255,0.1)",
@@ -235,7 +235,7 @@ export default function WhyChooseUs() {
               </motion.div>
             ))}
           </motion.div>
-          
+
         </div>
       </div>
     </section>

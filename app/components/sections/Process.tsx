@@ -2,11 +2,13 @@
 /* eslint-disable react/no-unescaped-entities */
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   staggerContainer,
   staggerChild,
   viewportOnce,
 } from "@/app/lib/animations";
+
 
 const steps = [
   {
@@ -20,6 +22,7 @@ const steps = [
     border: "group-hover:border-indigo-500/30",
     glow: "shadow-indigo-500/10 group-hover:shadow-indigo-500/20",
     blob: "bg-indigo-500/20",
+    image: "/images/heroes/industries_hero.png",
   },
   {
     number: "02",
@@ -32,6 +35,7 @@ const steps = [
     border: "group-hover:border-cyan-500/30",
     glow: "shadow-cyan-500/10 group-hover:shadow-cyan-500/20",
     blob: "bg-cyan-500/20",
+    image: "/images/heroes/services_hero.png",
   },
   {
     number: "03",
@@ -44,6 +48,7 @@ const steps = [
     border: "group-hover:border-violet-500/30",
     glow: "shadow-violet-500/10 group-hover:shadow-violet-500/20",
     blob: "bg-violet-500/20",
+    image: "/images/heroes/careers_hero.png",
   },
   {
     number: "04",
@@ -56,8 +61,10 @@ const steps = [
     border: "group-hover:border-emerald-500/30",
     glow: "shadow-emerald-500/10 group-hover:shadow-emerald-500/20",
     blob: "bg-emerald-500/20",
+    image: "/images/heroes/about_hero.png",
   },
 ];
+
 
 const cardVariant = {
   hidden: { opacity: 0, y: 40, scale: 0.95 },
@@ -85,23 +92,23 @@ const pulseGlow = {
 
 export default function Process() {
   return (
-    <section id="process" className="relative py-32 bg-[#060913] overflow-hidden">
+    <section id="process" className="relative py-12 sm:py-24  bg-[#060913] overflow-hidden">
       {/* Background Soft Mesh Glow */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <motion.div 
+        <motion.div
           animate={{ x: [0, 50, 0], y: [0, -30, 0] }}
           transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-[10%] -left-[10%] w-[50rem] h-[50rem] bg-indigo-600/10 blur-[120px] rounded-full mix-blend-screen opacity-70" 
+          className="absolute -top-[10%] -left-[10%] w-[50rem] h-[50rem] bg-indigo-600/10 blur-[120px] rounded-full mix-blend-screen opacity-70"
         />
-        <motion.div 
+        <motion.div
           animate={{ x: [0, -50, 0], y: [0, 40, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-[-10%] -right-[10%] w-[40rem] h-[40rem] bg-cyan-600/10 blur-[100px] rounded-full mix-blend-screen opacity-70" 
+          className="absolute bottom-[-10%] -right-[10%] w-[40rem] h-[40rem] bg-cyan-600/10 blur-[100px] rounded-full mix-blend-screen opacity-70"
         />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Header */}
         <motion.div
           className="max-w-3xl mb-24"
@@ -136,7 +143,7 @@ export default function Process() {
 
         {/* The Journey Container */}
         <div className="relative mt-12 pb-12">
-          
+
           {/* Animated Connecting Path (Desktop only) */}
           <div className="hidden lg:block absolute top-[2.5rem] left-0 right-0 h-[2px] bg-slate-800 rounded-full z-0 overflow-hidden">
             <motion.div
@@ -164,11 +171,11 @@ export default function Process() {
               >
                 {/* Number Badge sticking out perfectly aligned to the path line */}
                 <div className="absolute -top-6 lg:-top-10 left-6 lg:left-8 flex flex-col items-center">
-                  <motion.div 
+                  <motion.div
                     variants={pulseGlow}
                     initial="initial"
                     animate="animate"
-                    className={`absolute inset-0 ${step.blob} blur-xl rounded-full z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500`} 
+                    className={`absolute inset-0 ${step.blob} blur-xl rounded-full z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
                   />
                   <div className="relative w-14 h-14 rounded-2xl bg-[#0F1626] shadow-xl shadow-black/80 border border-white/10 flex items-center justify-center z-10 group-hover:scale-110 group-hover:border-white/20 transition-all duration-500">
                     <span className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-400 group-hover:from-white group-hover:to-white transition-colors duration-300">
@@ -179,14 +186,26 @@ export default function Process() {
 
                 <div className={`relative h-full flex flex-col p-8 pt-12 rounded-[1.9rem] overflow-hidden bg-[#0A0E17]/80 border border-white/[0.03] ${step.border} transition-colors duration-500`}>
                   
+                  {/* Background Image */}
+                  <div className="absolute inset-0 z-0 opacity-10 grayscale group-hover:grayscale-0 group-hover:opacity-20 transition-all duration-700">
+                    <Image
+                      src={step.image}
+                      alt={step.title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#0A0E17] via-transparent to-[#0A0E17]" />
+                  </div>
+
                   {/* Subtle Background Gradient on hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-b ${step.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0`} />
+                  <div className={`absolute inset-0 bg-gradient-to-b ${step.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10`} />
+
 
                   <div className="relative z-10 flex-col flex h-full">
                     <h3 className="text-2xl font-bold text-white mb-4 tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-300 transition-all duration-300">
                       {step.title}
                     </h3>
-                    
+
                     <p className="text-slate-400 font-light leading-relaxed mb-8 flex-grow">
                       {step.description}
                     </p>
@@ -194,7 +213,7 @@ export default function Process() {
                     {/* Tags List */}
                     <ul className="flex flex-col gap-3">
                       {step.details.map((detail, idx) => (
-                        <motion.li 
+                        <motion.li
                           key={detail}
                           initial={{ opacity: 0, x: -10 }}
                           whileInView={{ opacity: 1, x: 0 }}
@@ -202,13 +221,12 @@ export default function Process() {
                           viewport={{ once: true }}
                           className="flex items-center gap-3"
                         >
-                          <div className={`w-1.5 h-1.5 rounded-full ${
-  step.color === 'indigo' ? 'bg-indigo-400' :
-  step.color === 'cyan' ? 'bg-cyan-400' :
-  step.color === 'emerald' ? 'bg-emerald-400' :
-  step.color === 'violet' ? 'bg-violet-400' :
-  'bg-emerald-400'
-} group-hover:scale-150 group-hover:shadow-[0_0_8px_currentColor] transition-all duration-300`} />
+                          <div className={`w-1.5 h-1.5 rounded-full ${step.color === 'indigo' ? 'bg-indigo-400' :
+                              step.color === 'cyan' ? 'bg-cyan-400' :
+                                step.color === 'emerald' ? 'bg-emerald-400' :
+                                  step.color === 'violet' ? 'bg-violet-400' :
+                                    'bg-emerald-400'
+                            } group-hover:scale-150 group-hover:shadow-[0_0_8px_currentColor] transition-all duration-300`} />
                           <span className="text-sm font-medium text-slate-400 group-hover:text-slate-200 transition-colors">
                             {detail}
                           </span>

@@ -10,7 +10,7 @@ import {
 
 export default function CaseStudy() {
   return (
-    <section id="case-study" className="relative py-32 bg-[#060913] overflow-hidden">
+    <section id="case-study" className="relative py-12 sm:py-24  bg-[#060913] overflow-hidden">
       {/* Cinematic Lighting Background */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-[20%] right-[10%] w-[60rem] h-[60rem] bg-indigo-500/5 blur-[150px] rounded-full mix-blend-screen opacity-60" />
@@ -18,7 +18,7 @@ export default function CaseStudy() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <motion.div
           className="text-center max-w-2xl mx-auto mb-20"
@@ -53,14 +53,14 @@ export default function CaseStudy() {
         >
           {/* Subtle Outer Glow */}
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-          
+
           <div className="relative rounded-[2.4rem] bg-[#0A0E17]/90 p-8 sm:p-12 lg:p-16 overflow-hidden">
-            
+
             {/* Top Vignette overlay */}
             <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
 
             <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center relative z-10">
-              
+
               {/* Left Story Content */}
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
@@ -74,15 +74,15 @@ export default function CaseStudy() {
                     Retail & E-Commerce
                   </span>
                 </div>
-                
+
                 <h3 className="text-3xl sm:text-4xl font-extrabold text-white mb-6 leading-[1.2] tracking-tight">
                   Global Retailer Cuts Costs by <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">60%</span> with Cloud Migration
                 </h3>
-                
+
                 <p className="text-slate-400 text-lg leading-relaxed mb-10 font-light max-w-lg">
                   A leading retail chain with 2,000+ stores struggled with legacy
                   on-premise systems. We architected and executed a full cloud
-                  migration to AWS, implementing microservices and real-time analytics — 
+                  migration to AWS, implementing microservices and real-time analytics —
                   resulting in dramatic cost savings and uncompromising uptime.
                 </p>
 
@@ -149,7 +149,7 @@ export default function CaseStudy() {
 
                   {/* Mock Analytics Dashboard */}
                   <div className="flex flex-col h-full space-y-5">
-                    
+
                     {/* Top Stats Row */}
                     <div className="grid grid-cols-2 gap-4">
                       <motion.div
@@ -165,7 +165,7 @@ export default function CaseStudy() {
                         </div>
                         <div className="text-2xl font-bold text-white tracking-tight">12,408</div>
                       </motion.div>
-                      
+
                       <motion.div
                         className="bg-white/[0.02] border border-white/[0.04] rounded-xl p-4"
                         initial={{ opacity: 0, y: 15 }}

@@ -73,18 +73,18 @@ export default function TrustedClients() {
   }, [isAutoPlaying, nextSlide]);
 
   return (
-    <section className="relative w-full min-h-[750px] md:h-[850px] bg-[#05070F] overflow-hidden border-y border-white/[0.03] py-24">
+    <section className="relative w-full min-h-[750px] md:h-[850px] bg-[#05070F] overflow-hidden border-y border-white/[0.03] py-12 sm:py-24 ">
       {/* Ambient Background System */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#05070F_100%)] z-10" />
-        
+
         {/* Glow Blobs */}
-        <motion.div 
+        <motion.div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-500/10 blur-[120px] rounded-full mix-blend-screen"
           animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
-        <motion.div 
+        <motion.div
           className="absolute top-[40%] left-[60%] -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-cyan-500/10 blur-[100px] rounded-full mix-blend-screen"
           animate={{ scale: [1.2, 1, 1.2], opacity: [0.8, 0.5, 0.8] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
@@ -142,7 +142,7 @@ export default function TrustedClients() {
           {clients.map((client, i) => {
             const isActive = i === current;
             const position = basePositions[i];
-            
+
             return (
               <motion.div
                 key={client}
@@ -171,15 +171,15 @@ export default function TrustedClients() {
                   <div className={`
                     flex items-center gap-4 px-6 md:px-8 py-4 md:py-5 rounded-3xl 
                     backdrop-blur-xl border transition-all duration-700
-                    ${isActive 
-                      ? "bg-slate-800/80 border-indigo-400/50 shadow-[0_0_60px_rgba(99,102,241,0.35)] ring-1 ring-indigo-500/20" 
+                    ${isActive
+                      ? "bg-slate-800/80 border-indigo-400/50 shadow-[0_0_60px_rgba(99,102,241,0.35)] ring-1 ring-indigo-500/20"
                       : "bg-white/[0.03] border-white/10 grayscale hover:grayscale-0 hover:bg-white/[0.08]"}
                   `}>
                     <div className={`
                       w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center text-white font-black text-lg md:text-xl shadow-inner transition-colors duration-500
                       ${isActive ? "bg-gradient-to-br from-indigo-500 to-cyan-500 ring-2 ring-indigo-400/30" : "bg-white/10"}
                     `}>
-                       {client[0]}
+                      {client[0]}
                     </div>
                     <AnimatePresence mode="wait">
                       {!isActive && (

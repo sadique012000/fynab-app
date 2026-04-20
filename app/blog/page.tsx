@@ -13,6 +13,8 @@ import Link from "next/link";
 
 type TabType = "Latest" | "Most Read" | "Popular";
 
+import PageHero from "../components/sections/PageHero";
+
 export default function BlogHub() {
   const [activeTab, setActiveTab] = useState<TabType>("Latest");
   const [searchQuery, setSearchQuery] = useState("");
@@ -50,31 +52,16 @@ export default function BlogHub() {
     <div className="min-h-screen bg-[#020205] text-slate-300 selection:bg-indigo-500/30 selection:text-indigo-200">
       <Header />
       
-      <main className="relative pt-32 pb-24">
-        {/* Ambient Background Glows */}
-        <div className="absolute top-0 left-1/4 -z-10 h-[500px] w-[500px] rounded-full bg-indigo-600/10 blur-[120px]" />
-        <div className="absolute top-1/2 right-0 -z-10 h-[600px] w-[600px] rounded-full bg-cyan-600/5 blur-[150px]" />
+      <main className="relative">
+        <PageHero
+          title="Insights from the Future of Technology"
+          subtitle="Deep dives into software engineering, cloud architecture, and the AI revolution. Expert perspectives for the modern tech leader."
+          badge="Fynab Blog"
+          image="/images/heroes/services_hero.png"
+        />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Hero Section */}
-          <div className="relative mb-20 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h1 className="mb-6 text-4xl font-black tracking-tight text-white sm:text-6xl lg:text-7xl">
-                Insights from the <br />
-                <span className="bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent">
-                  Future of Technology
-                </span>
-              </h1>
-              <p className="mx-auto max-w-2xl text-lg text-slate-400 sm:text-xl">
-                Deep dives into software engineering, cloud architecture, and the AI revolution. 
-                Expert perspectives for the modern tech leader.
-              </p>
-            </motion.div>
-          </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+
 
           {/* Featured Post */}
           <motion.div

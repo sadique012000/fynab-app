@@ -5,11 +5,12 @@ import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
 
 interface Service {
   id: string;
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   title: string;
   description: string;
   color: string;
   glow: string;
+  image?: string;
 }
 
 export function ServiceCard({ service, index }: { service: Service; index: number }) {
@@ -56,8 +57,18 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
       style={{ perspective: 1000 }}
     >
       <div className="absolute inset-0 rounded-3xl z-0 overflow-hidden bg-white/5 pointer-events-none">
+        {/* Random Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={`https://images.unsplash.com/photo-${index === 0 ? '1451187580459-43490279c0fa' : index === 1 ? '1550751827-4bd374c3f58b' : index === 2 ? '1518770660439-4636190af475' : index === 3 ? '1460925895917-afdab827c52f' : index === 4 ? '1581091226825-a6a2a5aee158' : '1504384308090-c894fdcc538d'}?auto=format&fit=crop&w=800&q=80`}
+            alt={service.title}
+            className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-700 blur-[1px] group-hover:blur-0 scale-110 group-hover:scale-100 transition-all duration-700"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#030308]   via-transparent to-transparent" />
+        </div>
+
         <motion.div
-          className="absolute inset-[1px] rounded-[calc(1.5rem-1px)] bg-[#030308] z-0"
+          className="absolute inset-[1px] rounded-[calc(1.5rem-1px)] bg-[#030308]/10 backdrop-blur-[1px] z-0"
         />
         <motion.div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -90,30 +101,33 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
             whileHover={{ scale: 1.1, rotate: 5 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            <div className="absolute inset-0 rounded-2xl backdrop-blur-md" />
+            <div className="absolute inset-0 rounded-2xl bg-indigo-500/20 backdrop-blur-md border border-white/20" />
             <motion.div
-              className={`relative z-10 bg-gradient-to-br ${service.color} bg-clip-text text-transparent`}
+              className={`relative z-10 w-10 h-10 flex items-center justify-center p-1.5`}
               animate={isHovered ? {
                 scale: [1, 1.1, 1],
-                filter: ["hue-rotate(0deg)", "hue-rotate(30deg)", "hue-rotate(0deg)"]
               } : {}}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" as const }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
             >
-              {service.icon}
+              <img
+                src={`https://api.dicebear.com/7.x/identicon/svg?seed=${service.title}&backgroundColor=4f46e5`}
+                alt="icon"
+                className="w-full h-full rounded-lg shadow-lg"
+              />
             </motion.div>
           </motion.div>
 
           <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight mb-4">
             {service.title}
           </h3>
-          <p className="text-sm sm:text-base text-slate-400 leading-relaxed font-light">
+          <p className="text-sm sm:text-base text-white leading-relaxed font-light">
             {service.description}
           </p>
         </div>
 
         <div className="relative z-20 mt-10 pt-6 border-t border-white/5 opacity-80 group-hover:opacity-100 transition-opacity">
           <motion.button
-            className="flex items-center gap-2 text-sm font-medium text-white/70 group-hover:text-white transition-colors"
+            className="flex items-center gap-2 text-sm font-medium text-white group-hover:text-white transition-colors"
             whileHover={{ x: 5 }}
           >
             Explore service

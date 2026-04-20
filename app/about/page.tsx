@@ -3,54 +3,23 @@
 import { motion } from "framer-motion";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import PageHero from "../components/sections/PageHero";
 import FinalCTA from "../components/sections/FinalCTA";
-import { fadeUp, staggerContainer, viewportOnce } from "../lib/animations";
+import { viewportOnce } from "../lib/animations";
+
 
 export default function AboutPage() {
   return (
     <>
       <Header />
-      <main className="flex-1 bg-[#020205] text-white pt-32">
-        {/* Brand Story Hero */}
-        <section className="py-24 px-6 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-indigo-500/5 blur-[120px] rounded-full" />
-            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <motion.div
-                    initial="hidden"
-                    animate="visible"
-                    variants={staggerContainer}
-                >
-                    <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-500/20 bg-indigo-500/5 mb-6">
-                        <span className="text-xs font-bold text-indigo-400 uppercase tracking-widest">Our Story</span>
-                    </motion.div>
-                    <motion.h1 variants={fadeUp} className="text-5xl sm:text-7xl font-black mb-8 leading-tight">
-                        We build tools <br /> 
-                        for the <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-400 to-purple-400">Architects</span> <br />
-                        of the future.
-                    </motion.h1>
-                    <motion.p variants={fadeUp} className="text-xl text-slate-400 font-light leading-relaxed max-w-xl">
-                        Founded in 2011, Fynab was born from a simple mission: to make complex technology 
-                        feel effortless. Today, we&apos;re a global team of engineers, designers, and strategists 
-                        helping visionaries scale their impact.
-                    </motion.p>
-                </motion.div>
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1 }}
-                    className="relative"
-                >
-                    <div className="aspect-square rounded-3xl overflow-hidden glass-card border border-white/5 relative">
-                         <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-cyan-500/10" />
-                         <div className="absolute inset-0 flex items-center justify-center p-12">
-                            <div className="w-full h-full border border-white/5 rounded-2xl flex items-center justify-center bg-white/[0.02]">
-                                <span className="text-8xl font-black text-white/5 italic select-none">FYNAB</span>
-                            </div>
-                         </div>
-                    </div>
-                </motion.div>
-            </div>
-        </section>
+      <main className="flex-1 bg-[#020205] text-white">
+        <PageHero
+          title="We build tools for the Architects of the future"
+          subtitle="Founded in 2011, Fynab was born from a simple mission: to make complex technology feel effortless. Today, we're a global team of engineers, designers, and strategists helping visionaries scale their impact."
+          badge="Our Story"
+          image="/images/heroes/about_hero.png"
+        />
+
 
         {/* Mission / Vision */}
         <section className="py-32 px-6 max-w-7xl mx-auto">

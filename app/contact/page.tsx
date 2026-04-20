@@ -5,30 +5,20 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { fadeUp, staggerContainer, viewportOnce } from "../lib/animations";
 
+import PageHero from "../components/sections/PageHero";
+
 export default function ContactPage() {
   return (
     <>
       <Header />
-      <main className="flex-1 bg-[#020205] text-white pt-32">
-        {/* Contact Hero */}
-        <section className="py-20 px-6 max-w-7xl mx-auto flex flex-col items-center text-center">
-             <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={staggerContainer}
-            >
-                <motion.h1 variants={fadeUp} className="text-5xl sm:text-7xl font-black mb-8">
-                    Let&apos;s Build the <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-400">
-                        Future Together
-                    </span>
-                </motion.h1>
-                <motion.p variants={fadeUp} className="text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
-                    Have a vision? We have the tools. Reach out and let&apos;s discuss 
-                    how Fynab can accelerate your digital transformation.
-                </motion.p>
-            </motion.div>
-        </section>
+      <main className="flex-1 bg-[#020205] text-white">
+        <PageHero
+          title="Let's Build the Future Together"
+          subtitle="Have a vision? We have the tools. Reach out and let's discuss how Fynab can accelerate your digital transformation."
+          badge="Contact Us"
+          image="/images/heroes/about_hero.png"
+        />
+
 
         {/* Contact Content */}
         <section className="py-20 px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">

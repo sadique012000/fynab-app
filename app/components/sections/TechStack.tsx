@@ -65,7 +65,7 @@ const tagDotColors: Record<string, string> = {
 
 export default function TechStack() {
   return (
-    <section className="relative py-28 overflow-hidden bg-[#060913]">
+    <section className="relative py-12 sm:py-24  overflow-hidden bg-[#060913]">
       {/* ── ambient minimalist dark depth ───────────────────────── */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[80%] bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.03)_0%,rgba(0,0,0,0)_70%)]" />
@@ -177,7 +177,7 @@ export default function TechStack() {
                 >
                   {/* Subtle inner reflection mask */}
                   <div className="absolute inset-0 bg-white/5 lg:bg-transparent blur-md rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none" />
-                  
+
                   <img
                     src={tech.logo}
                     alt={tech.name}

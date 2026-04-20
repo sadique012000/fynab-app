@@ -8,44 +8,20 @@ import { ServiceCard } from "../components/ServiceCard";
 import FinalCTA from "../components/sections/FinalCTA";
 import { fadeUp, staggerContainer, viewportOnce } from "../lib/animations";
 
+import PageHero from "../components/sections/PageHero";
+
 export default function ServicesPage() {
   return (
     <>
       <Header />
-      <main className="flex-1 bg-[#020205] text-white overflow-hidden pt-32">
-        {/* Hero Section */}
-        <section className="relative py-20 px-6 sm:px-8 lg:px-12">
-          <div className="absolute inset-0 z-0 pointer-events-none">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-indigo-500/10 blur-[120px] rounded-full opacity-50" />
-          </div>
+      <main className="flex-1 bg-[#020205] text-white">
+        <PageHero
+          title="Comprehensive Solution for a Digital-First World"
+          subtitle="We offer a full suite of IT consulting and software development services to help you navigate the complexities of modern technology and achieve sustainable growth."
+          badge="Our Services"
+          image="/images/heroes/services_hero.png"
+        />
 
-          <div className="relative z-10 max-w-7xl mx-auto text-center">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={staggerContainer}
-              viewport={viewportOnce}
-            >
-              <motion.h1
-                variants={fadeUp}
-                className="text-4xl sm:text-6xl md:text-7xl font-black mb-8 leading-tight tracking-tighter"
-              >
-                Comprehensive Solution for a <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-400 to-purple-400">
-                  Digital-First World
-                </span>
-              </motion.h1>
-              <motion.p
-                variants={fadeUp}
-                className="text-lg sm:text-xl text-slate-400 max-w-3xl mx-auto mb-12 font-light leading-relaxed"
-              >
-                We offer a full suite of IT consulting and software development services 
-                to help you navigate the complexities of modern technology and achieve 
-                sustainable growth.
-              </motion.p>
-            </motion.div>
-          </div>
-        </section>
 
         {/* Services Grid */}
         <section className="py-20 px-6 sm:px-8 lg:px-12 relative">

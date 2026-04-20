@@ -51,30 +51,20 @@ const industries = [
   }
 ];
 
+import PageHero from "../components/sections/PageHero";
+
 export default function IndustriesPage() {
   return (
     <>
       <Header />
-      <main className="flex-1 bg-[#020205] text-white pt-32">
-        {/* Hero */}
-        <section className="py-20 px-6 max-w-7xl mx-auto text-center">
-            <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={staggerContainer}
-            >
-                <motion.h1 variants={fadeUp} className="text-5xl sm:text-7xl font-black mb-8">
-                    Empowering Every <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-400">
-                        Industry Vertical
-                    </span>
-                </motion.h1>
-                <motion.p variants={fadeUp} className="text-xl text-slate-400 max-w-2xl mx-auto mb-12 font-light">
-                    We bring domain expertise and cutting-edge tech to help leaders 
-                    across various sectors redefine what&apos;s possible.
-                </motion.p>
-            </motion.div>
-        </section>
+      <main className="flex-1 bg-[#020205] text-white">
+        <PageHero
+          title="Empowering Every Industry Vertical"
+          subtitle="We bring domain expertise and cutting-edge tech to help leaders across various sectors redefine what's possible."
+          badge="Our Expertise"
+          image="/images/heroes/industries_hero.png"
+        />
+
 
         {/* Industry Cards */}
         <section className="py-20 px-6 max-w-7xl mx-auto">

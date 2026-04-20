@@ -7,7 +7,7 @@ import { ServiceCard } from "@/app/components/ServiceCard";
 /* ── Main Section ───────────────────────────────────────── */
 export default function Services() {
   return (
-    <section id="services" className="relative py-32 bg-[#020205] overflow-hidden selection:bg-indigo-500/30">
+    <section id="services" className="relative py-12 sm:py-24  bg-[#020205] overflow-hidden selection:bg-indigo-500/30">
       {/* ── Ambient Background System ───────────────────── */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {/* Soft Noise Overlay for premium texture */}
@@ -37,7 +37,7 @@ export default function Services() {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="relative z-10 max-w-full mx-auto px-4">
         {/* ── Section Header ────────────────────────────── */}
         <div className="max-w-3xl mx-auto text-center mb-24">
           <motion.div
@@ -80,11 +80,15 @@ export default function Services() {
           </motion.p>
         </div>
 
-        {/* ── Grid System ───────────────────────────────── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {services.map((service, index) => (
-            <ServiceCard key={service.id} service={service} index={index} />
-          ))}
+        {/* ── Horizontal Scroll System ────────────────────── */}
+        <div className="relative">
+          <div className="flex overflow-x-auto pb-12 pt-4 gap-8 snap-x snap-mandatory no-scrollbar scroll-smooth hide-scrollbar">
+            {services.map((service, index) => (
+              <div key={service.id} className="flex-none w-[350px] sm:w-[450px] snap-center">
+                <ServiceCard service={service} index={index} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

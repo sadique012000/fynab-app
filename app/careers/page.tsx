@@ -17,12 +17,22 @@ export const metadata: Metadata = {
   description: "Join Fynab and help us redefine the future of IT solutions. Explore open roles in engineering, design, product, and more.",
 };
 
+import PageHero from "@/app/components/sections/PageHero";
+
 export default function CareersPage() {
   return (
     <main className="bg-[#05070F] min-h-screen selection:bg-indigo-500/30">
       <Header />
       
-      <CareersHero />
+      <PageHero
+        title="Build the future with us"
+        subtitle="We're on a mission to redefine the future of IT solutions. Join our remote-first team of innovators, thinkers, and builders."
+        badge="Careers at Fynab"
+        image="/images/heroes/careers_hero.png"
+        ctaText="View Open Roles"
+        ctaLink="#open-roles"
+      />
+
       <TechStackShowcase />
       <CareersCulture />
       <LifeAtFynab />

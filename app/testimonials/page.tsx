@@ -45,30 +45,20 @@ const testimonials = [
   }
 ];
 
+import PageHero from "../components/sections/PageHero";
+
 export default function TestimonialsPage() {
   return (
     <>
       <Header />
-      <main className="flex-1 bg-[#020205] text-white pt-32">
-        {/* Testimonials Hero */}
-        <section className="py-24 px-6 text-center relative overflow-hidden">
-             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[300px] bg-indigo-500/5 blur-[100px] rounded-[100%] opacity-50" />
-             <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={staggerContainer}
-                className="max-w-4xl mx-auto"
-            >
-                <motion.h1 variants={fadeUp} className="text-5xl sm:text-7xl font-black mb-8 leading-tight">
-                    Trusted by the <br /> 
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-400 to-purple-400">Pioneers of Tech</span>
-                </motion.h1>
-                <motion.p variants={fadeUp} className="text-xl text-slate-400 font-light max-w-2xl mx-auto">
-                    Hear from the leaders who chose Fynab to build their next 
-                    generation of digital infrastructure.
-                </motion.p>
-            </motion.div>
-        </section>
+      <main className="flex-1 bg-[#020205] text-white">
+        <PageHero
+          title="Trusted by the Pioneers of Tech"
+          subtitle="Hear from the leaders who chose Fynab to build their next generation of digital infrastructure."
+          badge="Success Stories"
+          image="/images/heroes/careers_hero.png"
+        />
+
 
         {/* Testimonials Grid */}
         <section className="py-20 px-6 max-w-7xl mx-auto">
