@@ -123,7 +123,7 @@ export default function BlogHub() {
           </motion.div>
 
           {/* Filtering & Search Bar */}
-          <div className="mb-12 flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
+          <div className="mb-12 flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center overflow-x-scroll no-scrollbar scroll-smooth">
             <CategoryBar />
             <SearchInput onSearch={setSearchQuery} />
           </div>
