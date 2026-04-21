@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import FinalCTA from "../components/sections/FinalCTA";
@@ -12,42 +13,48 @@ const industries = [
     desc: "Secure, scalable payment processing and AI-driven fraud detection systems.",
     icon: "💳",
     stats: "40% faster transactions",
-    color: "from-blue-500 to-indigo-600"
+    color: "from-blue-500 to-indigo-600",
+    slug: "fintech-banking"
   },
   {
     title: "Healthcare",
     desc: "Next-gen patient management and HIPAA-compliant data infrastructure.",
     icon: "🏥",
     stats: "100% compliance record",
-    color: "from-emerald-400 to-teal-600"
+    color: "from-emerald-400 to-teal-600",
+    slug: "healthcare"
   },
   {
     title: "E-Commerce",
     desc: "Hyper-dynamic storefronts with intelligent recommendation engines.",
     icon: "🛍️",
     stats: "25% conversion lift",
-    color: "from-orange-400 to-rose-500"
+    color: "from-orange-400 to-rose-500",
+    slug: "ecommerce"
   },
   {
     title: "Logistics",
     desc: "Real-time supply chain tracking and automated routing optimization.",
     icon: "🚚",
     stats: "30% fuel efficiency",
-    color: "from-cyan-400 to-blue-500"
+    color: "from-cyan-400 to-blue-500",
+    slug: "logistics"
   },
   {
     title: "Real Estate",
     desc: "Immersive VR tours and automated property management portals.",
     icon: "🏠",
     stats: "50% more leads",
-    color: "from-purple-500 to-fuchsia-600"
+    color: "from-purple-500 to-fuchsia-600",
+    slug: "real-estate"
   },
   {
     title: "Education",
     desc: "Interactive LMS platforms and collaborative remote learning tools.",
     icon: "🎓",
     stats: "95% student engagement",
-    color: "from-amber-400 to-orange-500"
+    color: "from-amber-400 to-orange-500",
+    slug: "education"
   }
 ];
 
@@ -79,14 +86,17 @@ export default function IndustriesPage() {
                         whileHover={{ y: -5 }}
                         className="relative group p-8 rounded-3xl glass-card border border-white/5 hover:border-white/10 transition-all overflow-hidden"
                     >
+                        <Link href={`/industries/case-study/${item.slug}`} className="absolute inset-0 z-20">
+                            <span className="sr-only">Read Case Study: {item.title}</span>
+                        </Link>
                         <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-10 blur-3xl transition-opacity duration-700`} />
                         <div className="relative z-10">
                             <div className="text-4xl mb-6">{item.icon}</div>
-                            <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
+                            <h3 className="text-2xl font-bold mb-4 group-hover:text-blue-300 transition-colors">{item.title}</h3>
                             <p className="text-slate-400 mb-8 font-light leading-relaxed">{item.desc}</p>
                             <div className="pt-6 border-t border-white/5 flex items-center justify-between">
                                 <span className="text-sm font-semibold text-cyan-400">{item.stats}</span>
-                                <span className="text-xs text-slate-500 uppercase tracking-widest">Case Study</span>
+                                <span className="text-xs text-slate-500 uppercase tracking-widest group-hover:text-white transition-colors flex items-center gap-1">Case Study <span className="group-hover:translate-x-1 transition-transform">&rarr;</span></span>
                             </div>
                         </div>
                     </motion.div>
