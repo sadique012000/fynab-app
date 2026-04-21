@@ -60,7 +60,7 @@ export default function FreelancerMarketplace() {
   return (
     <>
     <Header />
-      <main className="min-h-screen bg-[#020205] text-white pt-24 pb-20 overflow-hidden selection:bg-indigo-500/30">
+      <main className="min-h-screen bg-[#020205] text-white pt-24 pb-20 selection:bg-indigo-500/30">
       
       {/* Background Glow Mesh */}
       <div className="fixed inset-0 pointer-events-none mb-0">
@@ -105,12 +105,14 @@ export default function FreelancerMarketplace() {
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           
           {/* Sidebar / Filters */}
-          <aside className="w-full lg:w-[320px] flex-shrink-0 self-start lg:sticky lg:top-24">
-             <FilterSettings 
-               filters={filters} 
-               setFilters={setFilters} 
-               uniqueRoles={uniqueRoles} 
-             />
+          <aside className="w-full lg:w-[320px] shrink-0 self-start lg:sticky lg:top-24">
+             <div className="lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto">
+               <FilterSettings 
+                 filters={filters} 
+                 setFilters={setFilters} 
+                 uniqueRoles={uniqueRoles} 
+               />
+             </div>
           </aside>
 
           {/* Grid View */}
