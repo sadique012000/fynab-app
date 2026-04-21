@@ -24,8 +24,8 @@ const footerLinks = {
   resources: [
     { label: "Process", href: "/process" },
     { label: "Testimonials", href: "/testimonials" },
-    { label: "Documentation", href: "/process" },
-    { label: "FAQs", href: "/contact" },
+    { label: "Documentation", href: "/documentation" },
+    { label: "FAQs", href: "/faq" },
   ],
 };
 
@@ -137,14 +137,17 @@ export default function Footer() {
           </p>
 
           <div className="flex items-center gap-6">
-            {["Privacy Policy", "Terms of Service"].map((item) => (
+            {[
+              { name: "Privacy Policy", href: "/privacy" },
+              { name: "Terms of Service", href: "/terms" }
+            ].map((item) => (
               <motion.a
-                key={item}
-                href="#"
+                key={item.name}
+                href={item.href}
                 whileHover={{ y: -2 }}
                 className="text-sm text-slate-500 hover:text-white transition"
               >
-                {item}
+                {item.name}
               </motion.a>
             ))}
           </div>
